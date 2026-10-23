@@ -6,7 +6,17 @@ async function generateCaption(imageSrc) {
 
 
 async function translateCaption(captionENG) {
-  return [{translated_text: "Legenda traduzindo ...."}] ;
+  const response = await fetch("http://localhost:3000/translate",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "Application/json"
+      },
+      body: JSON.stringify({"text": captionENG})
+    },
+   )
+  const data = response.json()
+  return data ;
 }
 
 

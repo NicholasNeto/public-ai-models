@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { generateCaption } from "./models/api";
+import { generateCaption, translateCaption } from "./models/api";
 
 import "./App.css";
 
