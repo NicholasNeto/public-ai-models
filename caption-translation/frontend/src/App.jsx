@@ -6,13 +6,17 @@ import "./App.css";
 function App() {
   const [imageSrc, setImageSrc] = useState(null);
   const [caption, setCaption] = useState(null);
+  const [captionPTBR, setcaptionPTBR] = useState("<Legenda>");
+  captionPTBR
 
   async function addCapition() {
     setCaption("Gerando legenda ...");
-
     const caption = await generateCaption(imageSrc);
-
     setCaption(caption[0]["generated_text"]);
+    
+    setcaptionPTBR("Traduzindo legenda...")
+    const captionPTBR = await translateCaption(caption)
+    setcaptionPTBR(captionPTBR[0]["translated_text"])
   }
 
   return (
@@ -29,6 +33,7 @@ function App() {
       <div className="captioned-image">
         <img height="200" src={imageSrc} alt="" />
         <span>{caption}</span>
+        <span>{captionPTBR}</span>
       </div>
     </>
   );
