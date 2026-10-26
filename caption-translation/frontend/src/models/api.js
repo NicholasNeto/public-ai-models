@@ -12,7 +12,7 @@ async function translateCaption(captionENG) {
       headers: {
         "Content-Type": "Application/json"
       },
-      body: JSON.stringify({"text": captionENG})
+      body: JSON.stringify({"text": captionENG[0]["generated_text"]})
     },
    )
   const data = response.json()
